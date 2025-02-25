@@ -5,6 +5,7 @@ import questions from '../assets/data/MultipleChoiceQuestions';
 
 import { useEffect, useState } from 'react';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+import EndedQuestion from './EndedQuestion';
 
 type Option = {
   id: string;
@@ -40,11 +41,12 @@ export default function Home() {
       {/* laiko juosta */}
       <StatusBar animated barStyle={'light-content'} />
       {/* text klausimas */}
-      <MultipleChoiceQuestion
+      {/* <MultipleChoiceQuestion
         question={currentQuestion}
         onCurrentAnswer={onCorrectAnswer}
         onWrongAnser={onWrongAnser}
-      />
+      /> */}
+      <EndedQuestion />
     </SafeAreaView>
   );
 }
