@@ -1,11 +1,10 @@
-import { Image, StatusBar, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Alert, Image, StatusBar, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import question from '../assets/data/OneQuestionWithOption';
-import ImageOption from "~/components/ImageOptions.tsx/ImageOption";
-import {useState} from 'react';
-import CustomButton from "~/components/CustomButton";
+import questions from '../assets/data/MultipleChoiceQuestions';
 
+import { useEffect, useState } from 'react';
+import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 
 type Option = {
   id: string;
@@ -14,34 +13,38 @@ type Option = {
 };
 
 export default function Home() {
-  const [selected, setSelected] = useState <Option | null>(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); //indeksas nurodo dabartini klausyma
+  const [currentQuestion, setCurrentQuestion] = useState(questions[currentQuestionIndex]);
 
-const onButtonPress = () => {
-  console.warn('pasirinktas atsakymas', selected?.text);
-}
+  const onCorrectAnswer = () => {
+    setCurrentQuestionIndex(currentQuestionIndex + 1); //jis nustato pridedam viena ir pereinam prie kito klausymo
+  };
+
+  //apdoroti duomenis pries paleidziant
+  useEffect(() => {
+    if (currentQuestionIndex >= questions.length) {
+      Alert.alert('sveikiname', 'jus atsakete i visus klausymus');
+      setCurrentQuestionIndex(0);
+    } else {
+      //nustato nauja klausyma
+      setCurrentQuestion(questions[currentQuestionIndex]);
+    }
+  }, [currentQuestionIndex]);
+
+  const onWrongAnser = () => {
+    Alert.alert('netiesa!', 'bandykite dar karta!'); //neteisinga fukcija
+  };
 
   return (
     <SafeAreaView className="m-3 flex-1 items-center justify-center p-3">
       {/* laiko juosta */}
-      <StatusBar animated barStyle={'light-content'}/>
+      <StatusBar animated barStyle={'light-content'} />
       {/* text klausimas */}
-      <Text className="mb-4 text-center text-2xl font-bold">{question.question}</Text>
-      
-      {/* imam klausyma ir option ir imama masyva */}
-      <View className='w-full flex-1 flex-row flex-wrap justify-between gap-2'>
-        {question.options.map((option) => (
-          // panaudojam komponenta
-          <ImageOption key={option.id} 
-          image={option.image} 
-          text={option.text} 
-          isSelected = {selected?.id === option.id} 
-          onPress={() => setSelected(option)}/>
-        ))}
-        </View>
-
-
-        <CustomButton text ="Patvirtinti" onPress = {onButtonPress} disabled = {!selected}/>
+      <MultipleChoiceQuestion
+        question={currentQuestion}
+        onCurrentAnswer={onCorrectAnswer}
+        onWrongAnser={onWrongAnser}
+      />
     </SafeAreaView>
-
   );
 }
