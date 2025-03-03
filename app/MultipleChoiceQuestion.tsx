@@ -1,28 +1,29 @@
 import { View, Text } from 'react-native';
 import React, { useState } from 'react';
-import ImageOption from '~/components/ImageOptions.tsx/ImageOption';
+import ImageOption from '~/components/ImageOption';
 import CustomButton from '~/components/CustomButton';
 import { Option, QuestionProp } from '~/types';
 
-const MultipleChoiceQuestion = ({ question, onCurrentAnswer, onWrongAnser }: QuestionProp) => {
+const MultipleChoiceQuestion = ({ question, onCorrectAnswer, onWrongAnser }: QuestionProp) => {
   const [selected, setSelected] = useState<Option | null>(null);
+
   const onButtonPress = () => {
     if (selected?.correct) {
-      onCurrentAnswer(); //teisingas atsakymas
+      // Teisingas atsakymas
+      onCorrectAnswer();
       setSelected(null);
     } else {
-      //neteisingas
+      // Neteisingas atsakymas
       onWrongAnser();
     }
   };
+
   return (
     <>
-      <Text className="mb-4 text-center text-2xl font-bold">{question.question}</Text>
+      <Text className="mb-4 text-center text-lg font-bold">{question.question}</Text>
 
-      {/* imam klausyma ir option ir imama masyva */}
       <View className="w-full flex-1 flex-row flex-wrap justify-between gap-2">
         {question.options.map((option) => (
-          // panaudojam komponenta
           <ImageOption
             key={option.id}
             image={option.image}

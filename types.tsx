@@ -6,11 +6,10 @@ export type Option = {
 };
 
 export type QuestionProp = {
-question:{
+  question: {
     question: string;
     options: Option[];
-}
-onCurrentAnswer: () => void;
-onWrongAnser:() => void;
-}
-
+  };
+  onCorrectAnswer: () => void;
+  onWrongAnser: () => void;
+};
