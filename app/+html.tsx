@@ -11,7 +11,11 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
+<<<<<<< HEAD
         {/*
+=======
+        {/* 
+>>>>>>> 7f00e7d38beb5903a7ae56002a68ae9faef02a15
           This viewport disables scaling which makes the mobile website act more like a native app.
           However this does reduce built-in accessibility. If you want to enable scaling, use this instead:
             <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -20,8 +24,13 @@ export default function Root({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover"
         />
+<<<<<<< HEAD
         {/*
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native.
+=======
+        {/* 
+          Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
+>>>>>>> 7f00e7d38beb5903a7ae56002a68ae9faef02a15
           However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.
         */}
         <ScrollViewStyleReset />

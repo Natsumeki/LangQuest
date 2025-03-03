@@ -1,10 +1,18 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "LangQuest",
     "slug": "LangQuest",
     "version": "1.0.0",
 
     "scheme": "LangQuest",
+=======
+    "name": "langQuest",
+    "slug": "langQuest",
+    "version": "1.0.0",
+
+    "scheme": "langQuest",
+>>>>>>> 7f00e7d38beb5903a7ae56002a68ae9faef02a15
     "web": {
       "bundler": "metro",
       "output": "static",
