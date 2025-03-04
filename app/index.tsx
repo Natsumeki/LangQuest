@@ -29,15 +29,19 @@ export default function Home() {
   };
 
   return (
-    <SafeAreaView className="flex flex-1 items-center justify-center p-3">
-      <StatusBar animated barStyle={'light-content'} />
+    <SafeAreaView className="flex flex-1 p-3">
+      <StatusBar animated barStyle={'default'} />
 
       {/* <MultipleChoiceQuestion
         question={currentQuestion}
         onCorrectAnswer={onCorrectAnswer}
         onWrongAnser={onWrongAnser}
       /> */}
-      <EndedQuestion />
+      <EndedQuestion
+        question={currentQuestion}
+        onCorrectAnswer={onCorrectAnswer}
+        onWrongAnser={onWrongAnser}
+      />
     </SafeAreaView>
   );
 }

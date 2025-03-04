@@ -17,4 +17,10 @@ export default [
     text: 'I enjoy learning laguages',
     answer: 'Man patinka mokytis kalbu',
   },
+  {
+    id: 'q4',
+    type: 'OPEN_ENDED',
+    text: 'i like a dog',
+    answer: 'Man patinka suo',
+  },
 ];
