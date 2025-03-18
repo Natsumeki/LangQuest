@@ -4,7 +4,7 @@ import ImageOption from '~/components/ImageOption';
 import CustomButton from '~/components/CustomButton';
 import { Option, QuestionProp } from '~/types';
 
-const MultipleChoiceQuestion = ({ question, onCorrectAnswer, onWrongAnser }: QuestionProp) => {
+const MultipleChoiceQuestion = ({ question, onCorrectAnswer, onWrongAnswer }: QuestionProp) => {
   const [selected, setSelected] = useState<Option | null>(null);
 
   const onButtonPress = () => {
@@ -14,7 +14,7 @@ const MultipleChoiceQuestion = ({ question, onCorrectAnswer, onWrongAnser }: Que
       setSelected(null);
     } else {
       // Neteisingas atsakymas
-      onWrongAnser();
+      onWrongAnswer();
     }
   };
 

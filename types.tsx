@@ -10,7 +10,7 @@ export type QuizQuestion = {
   type: 'OPEN_ENDED' | 'MULTIPLE_CHOICE';
   text: string;
   answer?: string;
-  options?: Option;
+  options?: Option[];
 };
 
 export type QuestionProp = {
@@ -19,11 +19,15 @@ export type QuestionProp = {
     options: Option[];
   };
   onCorrectAnswer: () => void;
-  onWrongAnser: () => void;
+  onWrongAnswer: () => void;
 };
+
 export type EndedQuestionProps = {
   question: QuizQuestion;
-
   onCorrectAnswer: () => void;
-  onWrongAnser: () => void;
+  onWrongAnswer: () => void;
+};
+
+export type ProgressProps ={
+  progress: number;
 };
