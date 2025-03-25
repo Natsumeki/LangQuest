@@ -1,82 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import questions from '~/assets/data/AllQuestionsData';
-import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import React from 'react';
+import { useRouter } from 'expo-router'; // Import useRouter for navigation
 
-import { QuizQuestion } from '~/types';
-import EndedQuestion from '~/components/EndedQuestion';
-import HeaderComponent from '~/components/HeaderComponent';
+const Home = () => {
+  const router = useRouter(); // Initialize useRouter hook
 
-export default function Home() {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>(
-    questions[currentQuestionIndex]
-  );
-  // gyvybes
-const[lives, setLives] = useState(5);
-
-
-
-  useEffect(() => {
-    if (currentQuestionIndex >= questions.length) {
-      Alert.alert('Jūs laimėjote!');
-      setCurrentQuestionIndex(0);
-    } else {
-      setCurrentQuestion(questions[currentQuestionIndex]);
-    }
-  }, [currentQuestionIndex]);
-
-  const onCorrectAnswer = () => {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  // Navigate to the 'gameScreen' when the button is pressed
+  const navigateToGame = () => {
+    router.push('/gameScreen');
   };
 
-  const onWrongAnswer = () => {
-if(lives <= 1){
-  Alert.alert('jus pralaimejote', "bandykite is naujo" , [
-    { text: "bandykite dar karta", onPress: restart },
-    
-  ]);
-  setLives(0);
-}else{
-  Alert.alert('Neteisingas atsakymas, bandykite dar kartą!');
-  setLives(lives -1)
-}
-};
+  // Navigate to the 'optionScreen' when the button is pressed
+  const navigateToOption = () => {
+    router.push('/optionScreen');
+  };
 
-const restart  = () => {
-  setLives(5);
-  setCurrentQuestionIndex(0);
-};
-
-  
+  // Navigate to the 'rulesScreen' when the button is pressed
+  const navigateToRules = () => {
+    router.push('/rulesScreen');
+  };
 
   return (
+    <ImageBackground
+      source={{ uri: 'https://png.pngtree.com/background/20210711/original/pngtree-japanese-travel-fresh-and-wind-poster-background-picture-image_1070537.jpg' }}
+      className='flex-1 justify-center items-center p-5'
+    >
+      {/* Start Game Button */}
+      <TouchableOpacity
+        onPress={navigateToGame}
+    className='bg-red-500 p-4 rounded-full mb-5 w-64 h-16 justify-center items-center shadow-2xl shadow-blue-500'
+      >
+        <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: '#fff' }}>
+          Start Game
+        </Text>
+      </TouchableOpacity>
 
-    <SafeAreaView className="flex flex-1 p-3">
-      <StatusBar animated barStyle={'default'} />
-      
-      {/* <header></header> */}
-      <HeaderComponent progress={currentQuestionIndex / questions.length}lives={lives}/>
+      {/* Option Button */}
+      <TouchableOpacity
+        onPress={navigateToOption}
+        className='bg-red-500 p-4 rounded-full mb-5 w-64 h-16 justify-center items-center shadow-2xl shadow-blue-500'
 
+      >
+        <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: '#fff' }}>
+          Option
+        </Text>
+      </TouchableOpacity>
 
-      {currentQuestion.type === 'MULTIPLE_CHOICE' && (
-        <MultipleChoiceQuestion
-          question={{
-            question: currentQuestion.text,
-            options: currentQuestion.options || [],
-          }}
-          onCorrectAnswer={onCorrectAnswer}
-          onWrongAnswer={onWrongAnswer}
-        />
-      )}
-      {currentQuestion.type === 'OPEN_ENDED' && (
-        <EndedQuestion
-          question={currentQuestion}
-          onCorrectAnswer={onCorrectAnswer}
-          onWrongAnswer={onWrongAnswer}
-        />
-      )}
-    </SafeAreaView>
+      {/* Rules Button */}
+      <TouchableOpacity
+        onPress={navigateToRules}
+        className='bg-red-500 p-4 rounded-full mb-5 w-64 h-16 justify-center items-center shadow-2xl shadow-blue-900'
+
+      >
+        <Text style={{ textAlign: 'center', fontSize: 20, fontWeight: 'bold', color: '#fff' }}>
+          Rules
+        </Text>
+      </TouchableOpacity>
+    </ImageBackground>
   );
-}
+};
+
+export default Home;
