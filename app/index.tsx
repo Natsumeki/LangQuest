@@ -24,6 +24,7 @@ const Home = () => {
   const navigateToScreen = () => {
     router.push('/profileScreen');
   };
+  
   return (
     <ImageBackground
       source={backgroundimage}
