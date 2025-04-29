@@ -53,7 +53,7 @@ expo start
 
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key_here
 
-###🧩 Game Logic
+### 🧩 Game Logic
 
 Game loads questions from structured JSON
 
