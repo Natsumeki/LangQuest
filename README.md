@@ -38,10 +38,12 @@ A Duolingo-style Japanese learning mobile game, focused on mastering **Hiragana*
 
 ### Installation
 
+```bash
 git clone https://github.com/your-username/japanese-quiz-game.git
 cd japanese-quiz-game
 npm install
 expo start
+```
 
 /assets - Images, icons, sounds
 /components - Reusable UI components
@@ -51,7 +53,8 @@ expo start
 
 EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key_here
 
-🧩 Game Logic
+###🧩 Game Logic
+
 Game loads questions from structured JSON
 
 Each quiz round includes multiple choice answers
