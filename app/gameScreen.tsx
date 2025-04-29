@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, StatusBar } from 'react-native';
+import { Alert, StatusBar, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import questions from '~/assets/data/AllQuestionsData';
 import MultipleChoiceQuestion from './MultipleChoiceQuestion';
@@ -8,13 +8,14 @@ import { QuizQuestion } from '~/types';
 import EndedQuestion from '~/components/EndedQuestion';
 import HeaderComponent from '~/components/HeaderComponent';
 
+
 export default function GameScreen() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>(
     questions[currentQuestionIndex]
   );
   // gyvybes
-const[lives, setLives] = useState(5);
+  const [lives, setLives] = useState(5);
 
 
 
@@ -32,33 +33,28 @@ const[lives, setLives] = useState(5);
   };
 
   const onWrongAnswer = () => {
-if(lives <= 1){
-  Alert.alert('jus pralaimejote', "bandykite is naujo" , [
-    { text: "bandykite dar karta", onPress: restart },
-    
-  ]);
-  setLives(0);
-}else{
-  Alert.alert('Neteisingas atsakymas, bandykite dar kartą!');
-  setLives(lives -1)
-}
-};
+    if (lives <= 1) {
+      Alert.alert('jus pralaimejote', 'bandykite is naujo', [
+        { text: 'bandykite dar karta', onPress: restart },
+      ]);
+      setLives(0);
+    } else {
+      Alert.alert('Neteisingas atsakymas, bandykite dar kartą!');
+      setLives(lives - 1);
+    }
+  };
 
-const restart  = () => {
-  setLives(5);
-  setCurrentQuestionIndex(0);
-};
-
-  
+  const restart = () => {
+    setLives(5);
+    setCurrentQuestionIndex(0);
+  };
 
   return (
-
     <SafeAreaView className="flex flex-1 p-3">
       <StatusBar animated barStyle={'default'} />
-      
+     
       {/* <header></header> */}
-      <HeaderComponent progress={currentQuestionIndex / questions.length}lives={lives}/>
-
+      <HeaderComponent progress={currentQuestionIndex / questions.length} lives={lives} />
 
       {currentQuestion.type === 'MULTIPLE_CHOICE' && (
         <MultipleChoiceQuestion

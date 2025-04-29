@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation
+import { useUser } from '@clerk/clerk-expo';
 
 const ProfileScreen = () => {
   const navigation = useNavigation(); // Initialize navigation
@@ -13,7 +14,7 @@ const ProfileScreen = () => {
   const handleAddFriend = () => {
     setFollowers(followers + 1);
   };
-
+  const { user } = useUser();
   return (
     <View style={styles.container}>
       {/* Banner Section (Twitter Style) */}
@@ -39,7 +40,7 @@ const ProfileScreen = () => {
       </View>
 
       {/* User Information */}
-      <Text style={styles.username}>shahin</Text>
+      <Text style={styles.username}>{user?.firstName}</Text>
       <Text style={styles.joinedDate}>Joined August 2020</Text>
 
       {/* Following/Followers */}
