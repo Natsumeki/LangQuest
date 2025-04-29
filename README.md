@@ -32,9 +32,10 @@ A Duolingo-style Japanese learning mobile game, focused on mastering **Hiragana*
 
 ### 📸 Screenshots
 
-<img src="https://res.cloudinary.com/do71faaue/image/upload/v1745938883/Screenshot_2025-04-29_180003_o9ixyr.png" alt="Main Menu Screenshot" width="300"/>
-
-<img src="https://res.cloudinary.com/do71faaue/image/upload/v1745938883/Screenshot_2025-04-29_180040write_i7rx9z.png" alt="Quiz Screen Screenshot" width="300"/>
+<p align="center">
+  <img src="https://res.cloudinary.com/do71faaue/image/upload/v1745938883/Screenshot_2025-04-29_180003_o9ixyr.png" alt="Main Menu Screenshot" width="45%" style="margin-right: 10px;"/>
+  <img src="https://res.cloudinary.com/do71faaue/image/upload/v1745938883/Screenshot_2025-04-29_180040write_i7rx9z.png" alt="Quiz Screen Screenshot" width="45%"/>
+</p>
 
 ### Installation
 
