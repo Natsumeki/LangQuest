@@ -175,6 +175,7 @@ const questions: QuizQuestion[] = [
       },
     ],
   },
+  // --------------------------------------------------------
   {
     id: 'q7',
     type: 'OPEN_ENDED',
@@ -367,6 +368,7 @@ const questions: QuizQuestion[] = [
         correct: true,
       },
     ],
+    ////////////////////////
   },{
     id: 'q5',
     type: 'MULTIPLE_CHOICE',
@@ -536,6 +538,7 @@ const questions: QuizQuestion[] = [
       },
     ],
   },
+  //////////////////////=========
   {
     id: 'q5',
     type: 'MULTIPLE_CHOICE',
@@ -989,7 +992,9 @@ const questions: QuizQuestion[] = [
        
       },
     ],
-  },{
+  },
+  // ===============
+  {
     id: 'q5',
     type: 'MULTIPLE_CHOICE',
     text: "ho'?",
@@ -1376,7 +1381,9 @@ const questions: QuizQuestion[] = [
        
       },
     ],
-  },{
+  },
+  ///////////////////////////level5
+  {
     id: 'q5',
     type: 'MULTIPLE_CHOICE',
     text: "ya'?",

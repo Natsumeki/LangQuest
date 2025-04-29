@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import * as AuthSession from 'expo-auth-session';
 import { useSSO, useUser } from '@clerk/clerk-expo';
-import { View, Button } from 'react-native';
+import { View, Button, TouchableOpacity, Text } from 'react-native';
 import { router } from 'expo-router';
 export const useWarmUpBrowser = () => {
   useEffect(() => {
@@ -43,8 +43,20 @@ export default function Page() {
   console.log(user);
 
   return (
-    <View className="flex-row items-center rounded-full bg-pink-900 px-6 py-3">
-      <Button title="Sign in with Google" onPress={onPress} />
+    <View className="space-y-4">
+      {/* Google Sign-in Button */}
+      <TouchableOpacity
+        onPress={onPress}
+        className="flex-row items-center rounded-full bg-pink-900 px-6 py-3">
+        <Text className="text-center text-white">Sign in with Google</Text>
+      </TouchableOpacity>
+
+      {/* Guest Login Button */}
+      <TouchableOpacity
+        onPress={() => router.push('/mainScreen')}
+        className="flex-row items-center rounded-full bg-gray-800 px-6 py-3">
+        <Text className="text-center text-white">Prisijungti kaip svečias</Text>
+      </TouchableOpacity>
     </View>
   );
 }

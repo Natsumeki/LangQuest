@@ -8,7 +8,9 @@ import { useUser } from '@clerk/clerk-expo';
 const MainScreen = () => {
   const router = useRouter(); // Initialize useRouter hook
 
-  
+  const navigateTolevelScreen = () => {
+    router.push('/levelsScreen');
+  };
   // Navigate to the 'gameScreen' when the button is pressed
   const navigateToGame = () => {
     router.push('/gameScreen');
@@ -26,7 +28,7 @@ const MainScreen = () => {
   const navigateToScreen = () => {
     router.push('/profileScreen');
   };
-  
+
   const { user } = useUser();
 
   console.log(user);
@@ -37,7 +39,7 @@ const MainScreen = () => {
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 5 }}>
       {/* Start Game Button */}
       <TouchableOpacity
-        onPress={navigateToGame}
+        onPress={navigateTolevelScreen}
         style={{
           marginBottom: 20,
           height: 64,
