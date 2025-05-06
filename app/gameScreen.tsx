@@ -1,30 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, StatusBar, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import questions from '~/assets/data/AllQuestionsData';
-import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+import { useLocalSearchParams } from 'expo-router';
+
 
 import { QuizQuestion } from '~/types';
+import MultipleChoiceQuestion from './MultipleChoiceQuestion';
 import EndedQuestion from '~/components/EndedQuestion';
 import HeaderComponent from '~/components/HeaderComponent';
-
+import levelQuestions from '~/assets/data/levelsData';
 
 export default function GameScreen() {
+  const { levelGame } = useLocalSearchParams(); // Gauna lygio numerį kaip string
+  const level = Number(levelGame);
+
+  const questions = levelQuestions[level];
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>(
-    questions[currentQuestionIndex]
-  );
-  // gyvybes
   const [lives, setLives] = useState(5);
 
+  useEffect(() => {
+    setCurrentQuestionIndex(0);
+    setLives(5);
+  }, [level]);
 
+  if (!questions || questions.length === 0) {
+    return (
+      <SafeAreaView className="flex-1 justify-center items-center">
+        <StatusBar animated barStyle="default" />
+        <HeaderComponent progress={0} lives={lives} />
+        <View>
+          <Text>Šiame lygyje nėra klausimų.</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  const currentQuestion = questions[currentQuestionIndex];
 
   useEffect(() => {
     if (currentQuestionIndex >= questions.length) {
-      Alert.alert('Jūs laimėjote!');
-      setCurrentQuestionIndex(0);
-    } else {
-      setCurrentQuestion(questions[currentQuestionIndex]);
+      Alert.alert('Jūs laimėjote!', '', [
+        { text: 'Grįžti atgal', onPress: () => setCurrentQuestionIndex(0) },
+      ]);
     }
   }, [currentQuestionIndex]);
 
@@ -34,13 +52,12 @@ export default function GameScreen() {
 
   const onWrongAnswer = () => {
     if (lives <= 1) {
-      Alert.alert('jus pralaimejote', 'bandykite is naujo', [
-        { text: 'bandykite dar karta', onPress: restart },
+      Alert.alert('Jūs pralaimėjote', 'Bandykite iš naujo', [
+        { text: 'Bandyti dar kartą', onPress: restart },
       ]);
-      setLives(0);
     } else {
       Alert.alert('Neteisingas atsakymas, bandykite dar kartą!');
-      setLives(lives - 1);
+      setLives((prev) => prev - 1);
     }
   };
 
@@ -51,27 +68,33 @@ export default function GameScreen() {
 
   return (
     <SafeAreaView className="flex flex-1 p-3">
-      <StatusBar animated barStyle={'default'} />
-     
-      {/* <header></header> */}
-      <HeaderComponent progress={currentQuestionIndex / questions.length} lives={lives} />
+      <StatusBar animated barStyle="default" />
 
-      {currentQuestion.type === 'MULTIPLE_CHOICE' && (
-        <MultipleChoiceQuestion
-          question={{
-            question: currentQuestion.text,
-            options: currentQuestion.options || [],
-          }}
-          onCorrectAnswer={onCorrectAnswer}
-          onWrongAnswer={onWrongAnswer}
-        />
+      <HeaderComponent
+        progress={currentQuestionIndex / questions.length}
+        lives={lives}
+      />
+
+      {currentQuestion?.type === 'MULTIPLE_CHOICE' && (
+      <MultipleChoiceQuestion
+      question={{
+        id: currentQuestion.id, // pridėta
+        question: currentQuestion.text,
+        options: currentQuestion.options || [],
+      }}
+      onCorrectAnswer={onCorrectAnswer}
+      onWrongAnswer={onWrongAnswer}
+    />
+    
       )}
-      {currentQuestion.type === 'OPEN_ENDED' && (
-        <EndedQuestion
-          question={currentQuestion}
-          onCorrectAnswer={onCorrectAnswer}
-          onWrongAnswer={onWrongAnswer}
-        />
+
+      {currentQuestion?.type === 'OPEN_ENDED' && (
+      <EndedQuestion
+      question={currentQuestion} // čia jau yra visas su ID
+      onCorrectAnswer={onCorrectAnswer}
+      onWrongAnswer={onWrongAnswer}
+    />
+    
       )}
     </SafeAreaView>
   );

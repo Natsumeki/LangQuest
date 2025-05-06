@@ -13,14 +13,16 @@ export type QuizQuestion = {
   options?: Option[];
 };
 
-export type QuestionProp = {
+export interface QuestionProp {
   question: {
+    id: string;
     question: string;
     options: Option[];
   };
   onCorrectAnswer: () => void;
   onWrongAnswer: () => void;
-};
+}
+
 
 export type EndedQuestionProps = {
   question: QuizQuestion;
