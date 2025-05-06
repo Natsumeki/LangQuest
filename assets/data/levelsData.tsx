@@ -6,6 +6,8 @@ import { questionLevel3 } from './level3';
 import { questionLevel4 } from './level4';
 import { questionLevel5 } from './level5';
 import { questionLevel6 } from './level6';
+import { questionLevel7 } from './level7';
+import { questionLevel8 } from './level8';
 
 const levelQuestions: Record<number, QuizQuestion[]> = {
   1: questionLevel1,
@@ -14,6 +16,8 @@ const levelQuestions: Record<number, QuizQuestion[]> = {
   4: questionLevel4,
   5: questionLevel5,
   6: questionLevel6,
+  7: questionLevel7,
+  8: questionLevel8,
 };
 
 export default levelQuestions;

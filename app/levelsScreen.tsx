@@ -2,9 +2,12 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import React from 'react';
 import LevelCard from '../components/LevelCard';
 import { router } from 'expo-router';
+import levelQuestions from '~/assets/data/levelsData';
+
 
 const LevelsScreen = () => {
-  const levels = Array.from({ length: 10 }, (_, i) => i + 1);
+  // Gauname visus turimus lygius pagal levelQuestions raktus (pvz.: [1,2,3,...])
+  const levels = Object.keys(levelQuestions).map(Number).sort((a, b) => a - b);
 
   const handlePress = (level: number) => {
     router.push({
@@ -22,7 +25,9 @@ const LevelsScreen = () => {
         numColumns={2}
         columnWrapperStyle={styles.row}
         contentContainerStyle={styles.list}
-        renderItem={({ item }) => <LevelCard level={item} onPress={() => handlePress(item)} />}
+        renderItem={({ item }) => (
+          <LevelCard level={item} onPress={() => handlePress(item)} />
+        )}
       />
     </View>
   );

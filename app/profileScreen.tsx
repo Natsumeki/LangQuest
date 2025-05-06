@@ -23,14 +23,14 @@ const ProfileScreen = () => {
           style={styles.bannerImage}
           source={{
             uri: 'https://www.pixelstalk.net/wp-content/uploads/2016/07/HD-Peaceful-Background.jpg',
-          }} // Replace with your banner image URL
+          }} 
         />
         <View style={styles.profileImageContainer}>
           <Image
             style={styles.profileImage}
             source={{
               uri: 'https://th.bing.com/th/id/OIP.8n7dPdgUGoXllIeuXyk90AHaEK?rs=1&pid=ImgDetMain',
-            }} // Replace with actual image URL
+            }} 
           />
         </View>
         {/* Back Button */}
@@ -40,7 +40,7 @@ const ProfileScreen = () => {
       </View>
 
       {/* User Information */}
-      <Text style={styles.username}>{user?.firstName}</Text>
+      <Text style={styles.username}>{user ? user?.firstName : "svecias"}</Text>
       <Text style={styles.joinedDate}>Joined August 2020</Text>
 
       {/* Following/Followers */}
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
   },
   banner: {
     width: '100%',
-    height: 150, // Adjust the height as needed
+    height: 150, 
     marginBottom: 20,
-    position: 'relative', // To position elements within the banner
+    position: 'relative', 
   },
   bannerImage: {
     width: '100%',
@@ -74,20 +74,20 @@ const styles = StyleSheet.create({
   },
   profileImageContainer: {
     position: 'absolute',
-    bottom: -60, // Adjust to position the profile image overlapping the banner
-    left: 155, // Adjust the left position
+    bottom: -60, 
+    left: 155, 
   },
   profileImage: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    borderWidth: 4, // Add a border around the profile image (like Twitter)
+    borderWidth: 4, 
     borderColor: 'white',
   },
   username: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 70, // Adjust to position below the profile image
+    marginTop: 70,
     marginBottom: 10,
   },
   joinedDate: {
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   addFriendsButton: {
-    backgroundColor: '#3498db', // Example button color
+    backgroundColor: '#3498db',
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     left: 10,
     padding: 10,
     borderRadius: 20,
-    backgroundColor: 'rgba(0,0,0,0.3)', // Optional background
+    backgroundColor: 'rgba(0,0,0,0.3)', 
   },
   backButtonText: {
     color: 'white',

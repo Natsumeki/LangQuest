@@ -1,27 +1,27 @@
-import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native'; // Added Image import
+import { View, Text, TouchableOpacity, ImageBackground, Image } from 'react-native'; 
 import React from 'react';
-import { useRouter } from 'expo-router'; // Import useRouter for navigation
+import { useRouter } from 'expo-router'; 
 import backgroundimage from '../assets/images/bg.jpg';
-import iconse from '../assets/images/icone.png'; // Import the image to use as the icon
+import iconse from '../assets/images/icone.png'; 
 import { useUser } from '@clerk/clerk-expo';
 
 const MainScreen = () => {
-  const router = useRouter(); // Initialize useRouter hook
+  const router = useRouter(); 
 
   const navigateTolevelScreen = () => {
     router.push('/levelsScreen');
   };
-  // Navigate to the 'gameScreen' when the button is pressed
+ 
   const navigateToGame = () => {
     router.push('/gameScreen');
   };
 
-  // Navigate to the 'optionScreen' when the button is pressed
-  const navigateToOption = () => {
-    router.push('/optionScreen');
-  };
+  
+  // const navigateToOption = () => {
+  //   router.push('/optionScreen');
+  // };
 
-  // Navigate to the 'rulesScreen' when the button is pressed
+  
   const navigateToRules = () => {
     router.push('/rulesScreen');
   };
@@ -60,7 +60,7 @@ const MainScreen = () => {
 
       {/* Option Button */}
       <TouchableOpacity
-        onPress={navigateToOption}
+        // onPress={navigateToOption}
         style={{
           marginBottom: 20,
           height: 64,
@@ -107,14 +107,14 @@ const MainScreen = () => {
           position: 'absolute',
           top: 20,
           right: 20,
-          width: 40, // Set the width of the image
-          height: 40, // Set the height of the image
+          width: 40, 
+          height: 40, 
         }}>
         <Image
-          source={iconse} // Use the image you imported
+          source={iconse} 
           style={{
-            width: 40, // Set the width of the image
-            height: 40, // Set the height of the image
+            width: 40, 
+            height: 40, 
           }}
         />
       </TouchableOpacity>

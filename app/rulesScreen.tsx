@@ -7,8 +7,8 @@ const Rules = () => {
       source={{ uri: 'https://png.pngtree.com/background/20210711/original/pngtree-japanese-impression-travel-poster-background-template-picture-image_1104477.jpg' }} 
       style={{ flex: 1 }}
     >
-      <View className="flex-1 justify-center items-center pb-20"> {/* Center all content */}
-        <View className="bg-opacity-50 rounded-lg p-5 w-full max-w-lg"> {/* Restrict width for better layout */}
+      <View className="flex-1 justify-center items-center pb-20"> 
+        <View className="bg-opacity-50 rounded-lg p-5 w-full max-w-lg"> 
           {/* Title */}
           <Text className="text-3xl font-bold text-center mb-5 text-pink-500">
             Game Rules
