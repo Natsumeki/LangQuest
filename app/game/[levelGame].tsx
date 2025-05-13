@@ -11,10 +11,10 @@ import { QuizQuestion } from '~/types';
 import MultipleChoiceQuestion from '../MultipleChoiceQuestion';
 
 export default function GameLevelScreen() {
-  const { level } = useLocalSearchParams<{ level: string }>();
   const router = useRouter();
 
-  const parsedLevel = parseInt(level ?? '1', 10);
+  const { levelGame } = useLocalSearchParams<{ levelGame: string }>();
+  const parsedLevel = parseInt(levelGame ?? '1', 10);
   const questions = levelQuestions[parsedLevel] || [];
 
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -18,10 +18,10 @@ export default function Layout() {
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="mainScreen" options={{ headerShown: false }} />
-        <Stack.Screen name="levelsScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="levelsScreen" options={{ headerShown: true }} />
         <Stack.Screen name="sign-up" options={{ headerShown: true }} />
-        <Stack.Screen name="gameScreen" options={{ headerShown: true }} />
-        <Stack.Screen name="game/[level]" options={{ headerShown: false }} />
+        <Stack.Screen name="gameScreen" options={{ headerShown: false }} />
+        <Stack.Screen name="game/[level]" options={{ headerShown: true }} />
         <Stack.Screen name="optionScreen" options={{ headerShown: true }} />
         <Stack.Screen name="rules" options={{ headerShown: true }} />
         <Stack.Screen name="profileScreen" options={{ headerShown: false }} />

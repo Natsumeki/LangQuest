@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 30,
-    color: '#fff', // White color to make the text stand out
+    color: '#fff', 
     fontWeight: 'bold',
   },
 });
